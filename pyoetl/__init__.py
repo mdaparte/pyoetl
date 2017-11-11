@@ -95,14 +95,14 @@ def main():
     parser.add_argument('args', nargs='+', help="OrientDB JSON config files")
     args = parser.parse_args()
 
-    if not os.environ.has_key('ORIENTDB_DIR'):
+    if not os.environ.get('ORIENTDB_DIR', '') != '':
         raise ValueError('ORIENTDB_DIR not defined')
     ORIENTDB_DIR = os.environ['ORIENTDB_DIR']
 
     JAVA = os.path.join(os.environ['JAVA_HOME'], 'bin/java')
     if not os.path.exists(JAVA):
         JAVA = 'java'
-    if os.environ.has_key('JAVA_OPTS'):
+    if os.environ.get('JAVA_OPTS', '')!= '':
         JAVA_OPTS = [os.environ['JAVA_OPTS']]
     else:
         JAVA_OPTS = []
