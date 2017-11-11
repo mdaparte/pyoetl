@@ -80,8 +80,8 @@ class OETLProcessor(object):
             ps = subprocess.Popen(args, stdout=subprocess.PIPE)
             while ps.poll() is None:
                 l = ps.stdout.readline()
-                print l,
-            print ps.stdout.read()
+                print (l),
+            print(ps.stdout.read())
             return ps.returncode
         else:
             with open(os.devnull, 'w') as fp:
